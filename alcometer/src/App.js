@@ -17,10 +17,14 @@ function App() {
     let grams = litres * 8 * 4.5;
     let burning = weight / 10;
     let gramsLeft = grams - (burning * time);
-    
-    
 
-    
+    if (gender === 'male') {
+      gramsLeft = grams / (weight * 0.7);
+    }
+    else {
+      gramsLeft = grams / (weight * 0.6);
+    }
+     setResult(gramsLeft);
   }
 
 
@@ -34,11 +38,33 @@ function App() {
       </div>
       <div>
         <label>Tölkkejä: </label>
-        <input name='bottles' type='number' step='1' value={bottles} onChange={e => setBottles(e.target.value)}  />
+        <select name='time' value={bottles} onChange={e => setBottles(e.target.value)}>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
+          </select>
       </div>
       <div>
         <label>Aika (h) </label>
-        <input name='weight' type='number' step='1' value={time} onChange={e => setTime(e.target.value)}  />
+        <select name='time' value={time} onChange={e => setTime(e.target.value)}>
+        <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
+          </select>
       </div>
       <div>
           <label>Sukupuoli: </label>
@@ -46,7 +72,7 @@ function App() {
           <input type='radio' name='gender' value='female' onChange={e => setGender(e.target.value)} /><label>Nainen</label>
         </div>
         <div>
-          <output>{result}</output>
+          <output>{result.toFixed(1)}</output>
         </div>
         <button>Laske</button>
     </form>
