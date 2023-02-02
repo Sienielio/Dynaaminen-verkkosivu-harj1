@@ -7,24 +7,26 @@ function App() {
   const [weight, setWeight] = useState(0)
   const [gender, setGender] = useState('male')
   const [bottles, setBottles] = useState(0)
-  const [time, setTime] = useState(0)
+  const [time, setTime] = useState(1)
   const [result, setResult] = useState(0)
+
 
 
   function calculate(e) {
     e.preventDefault();
+    let promillit = 0;
     let litres = bottles * 0.33;
     let grams = litres * 8 * 4.5;
     let burning = weight / 10;
     let gramsLeft = grams - (burning * time);
 
     if (gender === 'male') {
-      gramsLeft = grams / (weight * 0.7);
+      promillit = gramsLeft / (weight * 0.7);
     }
     else {
-      gramsLeft = grams / (weight * 0.6);
+      promillit = gramsLeft / (weight * 0.6);
     }
-     setResult(gramsLeft);
+     setResult(promillit);
   }
 
 
